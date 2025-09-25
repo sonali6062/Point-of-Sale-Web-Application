@@ -1,0 +1,18 @@
+#managerProfile{
+    background:rgb(182, 143, 17);
+}
+#PageContent{
+    display:flex;
+    flex-direction:column;
+    padding:2%;
+    font-size:20px;
+}
+#Instructions{
+    position:absolute;
+    bottom:50px;
+    border-bottom:2px solid red;
+    background:rgba(255,255,255,0.7);
+    padding:1%;
+    margin-left:1%;
+    font-size:18px;
+}

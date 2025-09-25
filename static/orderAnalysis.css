@@ -1,0 +1,59 @@
+#salesAnalysis{
+    background:rgb(0, 84, 153);
+}
+#dateForm{
+    background:rgba(0, 0, 0, 0.8);
+    
+    padding:20px;
+    margin-top:10px;
+}
+#analysisField{
+    font-size:18px;
+    padding:4px;
+    border:none;
+    width:250px;
+    outline: none;
+}
+#analysisButton{
+    font-size:18px;
+    padding:4px;
+    border:1px solid rgb(41, 127, 255);
+    color:rgb(41, 127, 255);
+    background:rgba(0, 0, 0, 0);
+    width:160px;
+    height:40px;
+}
+#analysisButton:hover{
+    border:1px solid white;
+    color:white;
+}
+#analysisText{
+    box-shadow:0 0 5px 2px white;
+    padding:20px;
+    font-size:25px;
+    text-align:center;
+    width:500px;
+    margin:auto;
+    margin-top:100px;
+    color:white;
+    background:rgba(0,0,0,0.8);
+}
+#errorText{
+    padding:20px;
+    font-size:25px;
+    text-align:center;
+    width:500px;
+    margin:auto;
+    margin-top:100px;
+    color:rgb(255, 255, 255);
+    background:rgba(88, 0, 0, 0.9);
+    box-shadow:0 0 5px 2px white;
+}
+#graphDiv{
+    text-align:center;
+    margin-top:5%;
+}
+#graph{
+    width:1000px;
+    box-shadow:0 0 5px 3px black;
+}

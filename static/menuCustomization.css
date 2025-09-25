@@ -1,0 +1,168 @@
+::placeholder{
+    color:rgb(61, 61, 61)
+}
+#manageMenu{
+    background:rgb(182, 143, 17);
+}
+#popup{
+    position:absolute;
+    display:none;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    z-index:5;
+}
+#popupHead{
+    background:rgba(255, 255, 255, 0.9);
+    width:650px;
+    margin:auto;
+    margin-top:4%;
+    padding:4px;
+}
+#recipeForm{
+    background:rgba(255, 255, 255, 0.9);
+    width:650px;
+    margin:auto;
+    margin-top:2px;
+    padding-top:30px;
+    padding-bottom:30px;
+}
+#recipeFormInputs{
+    display:flex;
+    justify-content:space-between;
+    width:500px;
+    margin:auto;
+    margin-bottom:20px;
+}
+.recipeField{
+    background:white;
+    font-size:18px;
+    padding:4px;
+    outline:none;
+    border:1px solid rgb(78, 78, 78);
+    border-bottom:solid 4px rgb(59, 59, 59);
+}
+#addIngredientButton{
+    text-align:center;
+    background:none;
+    border:1px solid rgb(28, 65, 187);
+    color:rgb(28, 65, 187);
+    font-size:18px;
+    padding:4px;
+    width:200px;
+    height:40px;
+    margin-left:75px;
+}
+#addIngredientButton:hover{
+    border:1px solid black;
+    color:black;
+}
+#closePopup{
+    position:absolute;
+    top:4%;
+    right:2%;
+    background:red;
+    border:1px solid white;
+    font-size:18px;
+    outline:none;
+    color:white;
+    width:30px;
+    height:30px;
+    
+}
+
+#menuForm{
+    background:rgba(0, 0, 0, 0.5);
+    
+    padding:20px;
+    margin-top:10px;
+}
+.menuField{
+    font-size:18px;
+    padding:4px;
+    border:none;
+    width:200px;
+    outline: none;
+}
+.menuButton{
+    font-size:18px;
+    padding:4px;
+    border:1px solid rgb(235, 180, 0);
+    color:rgb(235, 180, 0);
+    background:rgba(0, 0, 0, 0);
+    width:160px;
+    height:40px;
+}
+.menuButton:hover{
+    border:1px solid white;
+    color:white;
+}
+
+table{
+    background:rgba(255, 255, 255, 0.6);
+    width:90%;
+    color:white;
+    font-size:18px;
+    margin:auto;
+    margin-top:10px;
+}
+th, td{
+    
+    padding:1%;
+}
+th{
+    text-align:left;
+    border-bottom:5px rgb(182, 143, 17) solid;
+}
+tr{
+    background:rgba(0, 0, 0, 0.8);
+}
+.recipeButton{
+    padding:0;
+}
+.openPopup{
+    width:100%;
+    font-size:18px;
+    border:none;
+    background:none;
+    outline:none;
+}
+.addRecipe{
+    color:red;
+}
+.recipeAdded{
+    color:green;
+}
+.openPopup:hover{
+    color:white;
+}
+#recipeDiv{
+    background:rgba(255, 255, 255, 0.9);
+    width:650px;
+    margin:auto;
+    margin-top:1%;
+    margin-bottom:20px;
+    height: 300px;
+    overflow-y: auto;
+}
+#recipeList{
+    width:500px;
+    margin:auto;
+    font-size:20px;
+    margin-top:1%;
+    background:none;
+    color:black;
+    margin-bottom:10px;
+}
+#recipeList th{
+    position:sticky;
+    top:0;
+    text-align:left;
+    border-bottom:1px solid black;
+    background:rgb(230, 230, 230);
+}
+#recipeList tr{
+    background:none;
+}

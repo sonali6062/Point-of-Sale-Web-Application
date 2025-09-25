@@ -1,0 +1,11 @@
+body{
+    background-image:url("images/stafflogin.jpg");
+    background-position:top;
+}
+#loginHead{
+    color:rgb(255, 70, 70);
+}
+#loginButton{
+    border:1px rgb(255, 70, 70) solid;
+    color:rgb(255, 70, 70);
+}

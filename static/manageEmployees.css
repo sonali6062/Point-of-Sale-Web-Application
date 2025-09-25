@@ -1,0 +1,50 @@
+#manageEmployees{
+    background:rgb(0, 84, 153);
+}
+#formDiv{
+    background:rgba(0, 0, 0, 0.8);
+    padding:20px;
+    margin-top:10px;
+}
+.employeeField{
+    font-size:18px;
+    padding:4px;
+    border:none;
+    width:250px;
+    outline: none;
+}
+.employeeButton{
+    font-size:18px;
+    padding:4px;
+    border:1px solid rgb(41, 127, 255);
+    color:rgb(41, 127, 255);
+    background:rgba(0, 0, 0, 0);
+    width:160px;
+    height:40px;
+}
+.employeeButton:hover{
+    border:1px solid white;
+    color:white;
+}
+#tableDiv{
+    width:90%;
+    margin:auto;
+}
+#tableDiv table{
+    background:rgba(255,255,255,0.8);
+    width:100%;
+    text-align:center;
+    color:white;
+    font-size:20px;
+}
+#tableDiv table tr{
+    background:rgba(0,0,0,0.9);
+    color:white;
+}
+#tableDiv table tr th{
+    padding:5px;
+    border-bottom:4px solid rgb(41, 127, 255);
+}
+#tableDiv table tr td{
+    padding:5px;
+}

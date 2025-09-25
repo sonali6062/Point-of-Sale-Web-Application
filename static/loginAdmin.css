@@ -1,0 +1,12 @@
+body{
+    background-image:url("images/adminlogin.jpg");
+    background-position:top;
+}
+
+#loginHead{
+    color:rgb(200, 255, 70);
+}
+#loginButton{
+    border:1px rgb(200, 255, 70) solid;
+    color:rgb(200, 255, 70);
+}

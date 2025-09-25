@@ -1,0 +1,76 @@
+#manageKOT{
+    background:rgb(190, 42, 42);
+}
+#PageContent{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,300px));
+   
+}
+.KOT{
+    display:flex;
+    flex-direction:column;
+    margin:20px;
+}
+.KOT:hover{
+    box-shadow:0 0 10px 5px black;
+}
+.KOT_datetime{
+background:rgb(173, 173, 173);
+display:flex;
+justify-content:space-between;
+padding:2px 10px;
+}
+.KOT_number{
+background:rgb(230, 230, 230);
+font-size:20px;
+padding:10px;
+text-align:center;
+}
+.KOT_items{
+background:rgb(255, 255, 255);
+padding:10px;
+height:130px;
+font-size:20px;
+text-align:center;
+overflow-y:auto;
+}
+.KOT_orderType{
+background:rgb(230, 230, 230);
+font-size:20px;
+padding:10px;
+text-align:center;
+}
+.KOT_buttons{
+
+background:rgba(0,0,0,0.9);
+
+}
+.KOT_form{
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:5px;    
+}
+.KOTbutton{
+    width:200px;
+    font-size:18px;
+    background:none;
+    padding:10px;
+}
+#generateBillBtn{
+    border:1px solid rgb(55, 108, 255);
+    color:rgb(55, 108, 255);
+    margin-bottom:5px; 
+}
+#KOTcompletedbtn{
+    border:1px solid rgba(255, 255, 123, 0.979);
+    color:rgba(255, 255, 123, 0.979);
+}
+#generateBillBtn:hover{
+    background:rgb(55, 108, 255);
+    color:white;
+}
+#KOTcompletedbtn:hover{
+    background:rgba(255, 255, 123, 0.979);
+    color:black;
+}
