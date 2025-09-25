@@ -1,0 +1,38 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'login.css'%}">
+    <link rel="stylesheet" href="{%static 'loginStaff.css'%}">
+    <title>Staff Login</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><a id="mainHeadingLink" href="\"><i>POSWA</i></a></h1>
+            <form class="navForm" action="authStaff">
+                <button class="navButton">Register as Staff</button>
+            </form>
+        </nav>
+    </header>
+    <div id="loginDiv">
+        <h1 id="loginHead">Login for Staff Access</h1>
+        <form id="loginForm" action="loginStaff" method="POST">
+            {%csrf_token%}
+            <input class="loginField" type="email" name="staffEmail" placeholder="Enter Email" required="true"><br>
+            <input class="loginField" type="password" name="staffPassword" placeholder="Enter Password" required="true"><br>
+            <input id="loginButton" type="submit" value="Login">
+        </form>
+        <div class="errorMessage">
+            {%for message in messages%}
+                {{message}}
+            {%endfor%}
+        </div>
+    </div>
+</body>
+</html>

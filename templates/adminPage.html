@@ -1,0 +1,54 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'adminPage.css'%}">
+    <link rel="stylesheet" href="{%static 'adminProfile.css'%}">
+    <title>Admin Page</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="adminProfile" href="adminProfile">Profile</a>
+                <a id="manageEmployees" href="manageEmployees">Manage Employees</a>
+                <a id="salesRecords" href="salesRecords">Sales Records</a>
+                <a id="salesAnalysis" href="salesAnalysis">Sales Analysis</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="mainPage">
+            {%for admin in Adetails%}
+            {%for detail in details%}
+            <div id="PageHead">
+                <h1>{{detail.Restaurant_name}}</h1><br>
+                <p><b>{{detail.Restaurant_address}}</b></p>
+            </div>
+            <div id="PageContent">
+                <p><b>Restaurant ID:</b> {{detail.user_id}}</p><br>
+                <p><b>Admin Name:</b> {{admin.first_name}} {{admin.last_name}}</p><br>
+                <p><b>Access ID:</b> {{detail.Admin_AccessID}}</p><br>
+                <p><b>Admin Address:</b> {{admin.address}}</p><br>
+                <p><b>Admin Contact:</b> {{admin.contact}}</p>
+            </div>
+            <div id="Instructions">
+                <p>
+                    Provide your <b>Managers</b> with the <b>Restaurant ID</b> and the 
+                    <b>Access ID</b> for them to be able to register themselves 
+                    in this application as your employees. 
+                </p>
+            </div>
+            {%endfor%}
+            {%endfor%}
+        </div>
+    </main>
+</body>
+</html>

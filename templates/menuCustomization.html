@@ -1,0 +1,119 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'managerPage.css'%}">
+    <link rel="stylesheet" href="{%static 'menuCustomization.css'%}">
+    <title>Menu Customization</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="managerProfile" href="managerProfile">Profile</a>
+                <a id="manageStaff" href="manageStaff">Manage Staff</a>
+                <a id="manageInventory" href="manageInventory">Manage Inventory</a>
+                <a id="manageMenu" href="customizeMenu">Customize Menu</a>
+                <a id="manageTable" href="manageCovers">Manage Dine-in Covers</a>
+                <a id="salesRecords" href="salesRecords">Sales Records</a>
+                <a id="salesAnalysis" href="salesAnalysis">Sales Analysis</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="popup">
+            <div id="popupHead">
+                <h3 id="popupItemName"></h3>
+            </div>
+            <form id="recipeForm">
+                {%csrf_token%}
+                <div id="recipeFormInputs">
+                    <input id="itemIdInput" type="hidden" name="itemId">
+                    <input list="ingredientSuggestions" id="ingredientName" class="recipeField" type="text" name="ingredientName" placeholder="Ingredient name" required="true">
+                    <datalist id="ingredientSuggestions">
+                    {%for ingredient in ingredients%}
+                        <option value={{ingredient.Ingredient_Name}}></option>
+                    {%endfor%}
+                    </datalist>
+                    <input id="ingredientQuantity" class="recipeField" type="text" name="ingredientQuantity" placeholder="Ingredient quantity (grams)" required="true">
+                </div>
+                <input id="addIngredientButton" type="submit" value="Add Ingredient">
+            </form>
+            <div id="recipeDiv">
+                <table id="recipeList">
+                    <tr>
+                    <th>S.no.</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    </tr>
+                    <tr class=ingredientList></tr>
+                </table>
+            </div>
+            <button type="submit" id="closePopup" onClick="window.location.reload();">X</button>
+        </div>
+
+        <div id="mainPage">
+            {%for restaurant in Restaurantdetails%}
+            <div id="PageHead">
+                <h1>{{restaurant.Restaurant_name}}</h1><br>
+                <p><b>{{restaurant.Restaurant_address}}</b></p>
+            </div>
+            {%endfor%}
+            <div id="PageContent">
+                <form id="menuForm" action="customizeMenu" method="post">
+                    {%csrf_token%}
+                    <input class="menuField" type="text" name="itemName" placeholder="Item name" required="true">
+                    <input list="itemCategorySuggestion" class="menuField" type="text" name="itemCategory" placeholder="Item Category" required="true" autocomplete="off">
+                    <datalist id="itemCategorySuggestion">
+                        <option value="Food item"></option>
+                        <option value="Beverage"></option>
+                    </datalist>
+                    <input list="itemTypeSuggestion" class="menuField" type="text" name="itemType" placeholder="Veg/Non-Veg" required="true" autocomplete="off">
+                    <datalist id="itemTypeSuggestion">
+                        <option value="Veg"></option>
+                        <option value="Non-Veg"></option>
+                    </datalist>
+                    <input class="menuField" type="text" name="itemProfitMargin" placeholder="Profit margin required" required="true"><br><br>
+                    <input class="menuButton" type="submit" value="Add to Menu">
+                </form>
+                <table>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Item Category</th>
+                        <th>Item Type</th>
+                        <th>GST </th>
+                        <th>Profit Margin</th>
+                        <th>Cost Price</th>
+                        <th>Selling Price</th>
+                        <th>Recipe</th>
+                    </tr>
+                    {%for item in items%}
+                    <tr>
+                        <td>{{item.Item_Name}}</td>
+                        <td>{{item.Item_Category}}</td>
+                        <td>{{item.Item_Type}}</td>
+                        <td>{{item.Item_GST}}%</td>
+                        <td>{{item.Item_ProfitMargin}}%</td>
+                        <td>{{item.Cost_Price}}/-</td>
+                        <td>{{item.Selling_Price}}/-</td>
+                        {%if item.Recipe == False%}
+                        <td class="recipeButton"><button type="button" class="openPopup addRecipe" value={{item.id}}>Add Recipe</button></td>
+                        {%else%}
+                        <td class="recipeButton"><button type="button" class="openPopup recipeAdded" value={{item.id}}>Recipe Added</button></td>
+                        {%endif%}
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="{%static 'popup.js'%}"></script>
+</body>
+</html>

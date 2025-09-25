@@ -1,0 +1,43 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <link rel="stylesheet" href="{%static 'revenuePrediction.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <title>Revenue Prediction</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><a id="mainHeadingLink" href="\"><i>POSWA</i></a></h1>
+        </nav>
+    </header>
+    <main>
+        <div id="predictionDiv">
+            <form id="predictionForm" action="predictRevenue" method="post">
+                {%csrf_token%}
+                <input list="forPrediction" autoComplete="off" class="revenueFields" placeholder="Is your restaurant a Food Court type of restaurant ? (Yes/No)" name="type_FC" required="true"><br>
+                <input list="forPrediction" autoComplete="off" class="revenueFields" placeholder="Is your restaurant an Inline type of restaurant ?(Yes/No)" name="type_IL" required="true"><br>                
+                <input list="forPrediction" autoComplete="off" class="revenueFields" placeholder="Is your restaurant a Drive Thru type of restaurant ?(Yes/No)" name="type_DT" required="true"><br>                
+                <input list="forPrediction" autoComplete="off" class="revenueFields" placeholder="Is your restaurant in a Big City ?(Yes/No)" name="bigCity" required="true"><br>
+                <datalist id="forPrediction">
+                    <option value='Yes'></option>
+                    <option value='No'></option>
+                </datalist>
+                <input type="number" autoComplete="off" class="revenueFields" placeholder="Number of hours the restaurant is open a day ?" name="openTime" required="true" min="1" max="24"><br>
+                <input class="revenueButton" type="submit" value="Predict">
+            </form>
+        </div>
+        <div id="predictionResult">
+            {%if result == 0%}
+            Make a prediction!
+            {%else%}
+            The annual revenue for your restaurant is estimated to be Rs {{result}}
+            {%endif%}
+        </div>
+        
+    </main>

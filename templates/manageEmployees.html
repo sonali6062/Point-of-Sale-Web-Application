@@ -1,0 +1,104 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'adminPage.css'%}">
+    <link rel="stylesheet" href="{%static 'manageEmployees.css'%}">
+    <title>Admin Page</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="adminProfile" href="adminProfile">Profile</a>
+                <a id="manageEmployees" href="manageEmployees">Manage Employees</a>
+                <a id="salesRecords" href="salesRecords">Sales Records</a>
+                <a id="salesAnalysis" href="salesAnalysis">Sales Analysis</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="mainPage">
+            {%for detail in Restaurantdetails%}           
+            <div id="PageHead">
+                <h1>{{detail.Restaurant_name}}</h1><br>
+                <p><b>{{detail.Restaurant_address}}</b></p>
+            </div>
+            <div id="PageContent">
+               <div id="formDiv">
+                   <form id="updateSalaryForm" action="manageEmployees" method="post">
+                       {%csrf_token%}
+                       <input class="employeeField" type="text" name="employeeEmail" placeholder="Enter employee email id" >
+                       <input class="employeeField" type="text" name="employeeSalary" placeholder="Enter new salary" ><br/><br>
+                       <input class="employeeButton" type="submit" value="Update Salary">
+                   </form>
+                   <br/>
+                   <div class="errorMessage">
+                        {%for message in messages%}
+                            {{message}}
+                        {%endfor%}
+                    </div>
+               </div>
+               <br/>
+               <div id="tableDiv">
+                   <h2>Managers</h2>
+                   <table>
+                       <tr>
+                           <th>Name</th>
+                           <th>Email</th>
+                           <th>Date Joined</th>
+                           <th>Contact</th>
+                           <th>Address</th>
+                           <th>Salary</th>
+                       </tr>
+                       {%for manager in managers%}
+                       <tr>
+                           <td>{{manager.name}}</td>
+                           <td>{{manager.email}}</td>
+                           <td>{{manager.joiningDate}}</td>
+                           <td>{{manager.contact}}</td>
+                           <td>{{manager.address}}</td>
+                           <td>{{manager.salary}}</td>
+                       </tr>
+                       {%endfor%}
+                   </table>
+               </div>
+               <br/>
+               <div id="tableDiv">
+                <h2>Staff</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>Email</th>
+                        <th>Date Joined</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Salary</th>
+                    </tr>
+                    {%for staff in staves%}
+                    <tr>
+                        <td>{{staff.name}}</td>
+                        <td>{{staff.designation}}</td>
+                        <td>{{staff.email}}</td>
+                        <td>{{staff.joiningDate}}</td>
+                        <td>{{staff.contact}}</td>
+                        <td>{{staff.address}}</td>
+                        <td>{{staff.salary}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
+            </div>
+            {%endfor%}
+        </div>
+    </main>
+</body>
+</html>

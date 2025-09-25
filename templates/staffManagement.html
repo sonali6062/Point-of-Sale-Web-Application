@@ -1,0 +1,74 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'managerPage.css'%}">
+    <link rel="stylesheet" href="{%static 'staffManagement.css'%}">
+    <title>Staff Management</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="managerProfile" href="managerProfile">Profile</a>
+                <a id="manageStaff" href="manageStaff">Manage Staff</a>
+                <a id="manageInventory" href="manageInventory">Manage Inventory</a>
+                <a id="manageMenu" href="customizeMenu">Customize Menu</a>
+                <a id="manageTable" href="manageCovers">Manage Dine-in Covers</a>
+                <a id="salesRecords" href="salesRecords">Sales Records</a>
+                <a id="salesAnalysis" href="salesAnalysis">Sales Analysis</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="mainPage">
+            {%for restaurant in Restaurantdetails%}
+            <div id="PageHead">
+                <h1>{{restaurant.Restaurant_name}}</h1><br>
+                <p><b>{{restaurant.Restaurant_address}}</b></p>
+            </div>
+            {%endfor%}
+            <div id="PageContent">
+                <form id="addStaff" action="" method="post">
+                    {%csrf_token%}
+                    <input class="registerField" type="text" name="staffName" placeholder="Enter Name" required="true">
+                    <input class="registerField" type="text" name="staffEmail" placeholder="Enter Email" required="true">
+                    <input class="registerField" type="text" name="staffAddress" placeholder="Enter Address" required="true">           
+                    <input class="registerField" type="number" name="staffContact" placeholder="Enter Contact" required="true">
+                    <input class="registerField" type="text" name="designation" placeholder="Enter staff post" required="true">
+                    <input class="registerField" type="number" name="staffSalary" placeholder="Enter Salary" required="true"><br><br>
+                    <input class="registerButton" type="submit" value="Add Staff">
+                </form>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Staff Post</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Contact</th>
+                        <th>Salary</th>
+                    </tr>
+                    {%for staff in staffList%}
+                    <tr>
+                        <td>{{staff.name}}</td>
+                        <td>{{staff.designation}}</td>
+                        <td>{{staff.email}}</td>
+                        <td>{{staff.address}}</td>
+                        <td>{{staff.contact}}</td>
+                        <td>{{staff.salary}}</td>
+                    </tr>
+                    {%endfor%}
+                    
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

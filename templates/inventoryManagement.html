@@ -1,0 +1,66 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'managerPage.css'%}">
+    <link rel="stylesheet" href="{%static 'inventoryManagement.css'%}">
+    <title>Inventory Management</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="managerProfile" href="managerProfile">Profile</a>
+                <a id="manageStaff" href="manageStaff">Manage Staff</a>
+                <a id="manageInventory" href="manageInventory">Manage Inventory</a>
+                <a id="manageMenu" href="customizeMenu">Customize Menu</a>
+                <a id="manageTable" href="manageCovers">Manage Dine-in Covers</a>
+                <a id="salesRecords" href="salesRecords">Sales Records</a>
+                <a id="salesAnalysis" href="salesAnalysis">Sales Analysis</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="mainPage">
+            {%for restaurant in Restaurantdetails%}
+            <div id="PageHead">
+                <h1>{{restaurant.Restaurant_name}}</h1><br>
+                <p><b>{{restaurant.Restaurant_address}}</b></p>
+            </div>
+            {%endfor%}
+            <div id="PageContent">
+                <form id="inventoryForm" action="manageInventory" method="post">
+                    {%csrf_token%}
+                    <input class="inventoryField" type="text" name="ingredientName" placeholder="Ingredient name" required="true">
+                    <input class="inventoryField" type="text" name="ingredientQuantity" placeholder="Ingredient qunatity (grams)" required="true">
+                    <input class="inventoryField" type="text" name="ingredientPrice" placeholder="Ingredient price" required="true"><br><br>
+                    <input class="inventoryButton" type="submit" value="Add to Inventory">
+                </form>
+                <table>
+                    <tr>
+                        <th>Ingredient Name</th>
+                        <th>Quantity Present</th>
+                        <th>Price per gram (Rs.)</th>
+                    </tr>
+                    {%for ingredient in Ingredients%}
+    
+                    <tr>
+                        <td>{{ingredient.Ingredient_Name}}</td>
+                        <td>{{ingredient.Inventory_Quantity}} grams</td>
+                        <td>{{ingredient.Ingredient_PricePerGram}}/-</td>
+                    </tr>
+                
+                    {%endfor%}
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

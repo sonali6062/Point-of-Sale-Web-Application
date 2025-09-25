@@ -1,0 +1,63 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'managerPage.css'%}">
+    <link rel="stylesheet" href="{%static 'coverManagement.css'%}">
+    <title>Inventory Management</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="managerProfile" href="managerProfile">Profile</a>
+                <a id="manageStaff" href="manageStaff">Manage Staff</a>
+                <a id="manageInventory" href="manageInventory">Manage Inventory</a>
+                <a id="manageMenu" href="customizeMenu">Customize Menu</a>
+                <a id="manageTable" href="manageCovers">Manage Dine-in Covers</a>
+                <a id="salesRecords" href="salesRecords">Sales Records</a>
+                <a id="salesAnalysis" href="salesAnalysis">Sales Analysis</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="mainPage">
+            {%for restaurant in Restaurantdetails%}
+            <div id="PageHead">
+                <h1>{{restaurant.Restaurant_name}}</h1><br>
+                <p><b>{{restaurant.Restaurant_address}}</b></p>
+            </div>
+            {%endfor%}
+            <div id="PageContent">
+                <form id="tableForm" action="manageCovers" method="post">
+                    {%csrf_token%}
+                    <input class="tableField" name="tableNumber" type="text" placeholder="Enter table number" required="true"><br>
+                    <input class="tableField" name="covers" type="text" placeholder="Enter number of seats" required="true"><br><br>
+                    <input class="tableButton"  type="submit" value="Add Table">
+                </form>
+                <div id="tableList">
+                    <table>
+                        <tr>
+                            <th>Table Number</th>
+                            <th>Number of Covers</th>
+                        </tr>
+                        {%for table in seatDetails%}
+                        <tr>
+                            <td>{{table.Table_Number}}</td>
+                            <td>{{table.Number_Of_Covers}}</td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <link rel="stylesheet" href="{%static 'registerManager.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <title>Manager Registration</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><a id="mainHeadingLink" href="\"><i>POSWA</i></a></h1>
+            <form class="navForm" action="loginManager">
+                <button class="navButton">Manager Login</button>
+            </form>
+        </nav>
+    </header>
+    <main>
+        <div id="registerDiv">
+            <h1>Register as Manager</h1>
+            <form id="registerForm" action="registerManager" method="POST">
+                {%csrf_token%}
+                <input class="registerField" type="text" name="managerName" placeholder="Enter Name" required="true">
+                <input class="registerField" type="email" name="managerEmail" placeholder="Enter Email" required="true">
+                <input class="registerField" type="text" name="managerAddress" placeholder="Enter Address" required="true">
+                <input class="registerField" type="password" name="password1" placeholder="Enter Password" required="true">
+                <input class="registerField" type="number" name="managerContact" placeholder="Enter Contact" required="true">
+                <input class="registerField" type="password" name="password2" placeholder="Confirm Password" required="true">
+                <input class="registerField" type="text" name="managerAccessID" placeholder="Enter Access ID" required="true">
+                <input class="registerButton" type="submit" value="Register">
+            </form>
+        </div>
+    </main>
+</body>
+</html>

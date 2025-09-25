@@ -1,0 +1,40 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'login.css'%}">
+    <link rel="stylesheet" href="{%static 'loginAdmin.css'%}">
+    <title>Admin Login</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><a id="mainHeadingLink" href="\"><i>POSWA</i></a></h1>
+            <form class="navForm" action="registerAdmin">
+                <button class="navButton">Register Your Business Here!</button>
+            </form>
+        </nav>
+    </header>
+    <main>
+        <div id="loginDiv">
+            <h1 id="loginHead">Login for Admin Access</h1>
+            <form id="loginForm" action="loginAdmin" method="POST">
+                {%csrf_token%}
+                <input class="loginField" name="adminEmail" type="email" placeholder="Enter Email" required="true"><br>
+                <input class="loginField" name="adminPassword" type="password" placeholder="Enter Password" required="true"><br>
+                <input id="loginButton"  type="submit" value="Login">
+            </form>
+            <div class="errorMessage">
+                {%for message in messages%}
+                    {{message}}
+                {%endfor%}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

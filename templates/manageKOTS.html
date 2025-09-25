@@ -1,0 +1,77 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'staffPage.css'%}">
+    <link rel="stylesheet" href="{%static 'manageKOTS.css'%}">
+    <title>Staff Page</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="staffProfile" href="staffProfile">Profile</a>
+                <a id="manageOrders" href="manageOrders">Manage Previous Orders</a>
+                <a id="manageKOT" href="manageKOTS">View Active KOTs</a>
+                <a id="manageCustomers" href="manageCustomers">Manage Customer Details</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="orderPopup">
+            <button id="closePopup" type="button">X</button>
+            <form id="orderPopupForm" action="">
+                {%csrf_token%}
+            </form>
+        </div>
+        <div id="orderPopup"></div>
+        <div id="mainPage">
+            {%for restaurant in Restaurantdetails%}
+            <div id="PageHead">
+                <h1>{{restaurant.Restaurant_name}}</h1><br>
+                <p><b>{{restaurant.Restaurant_address}}</b></p>
+                <button id="orderButton">Place Order</button>
+            </div>
+            {%endfor%}
+            <div id="PageContent">
+                {%for order in Activeorders%}
+                <div class="KOT">
+                    <div class="KOT_datetime">
+                        <span>{{order.orderDate}}</span>
+                        <span>{{order.orderTime}}</span>
+                    </div>
+                    <div class="KOT_number">
+                        KOT #{{forloop.counter}}
+                    </div>
+                    <div class="KOT_items">
+                        {%for name,quantity in order.orderItems.items%}
+                            {{name}} : {{quantity}}<br>
+                        {%endfor%}
+                    </div>
+                    <div class="KOT_orderType">
+                        <span>{{order.orderType}}</span>
+                        {%if order.orderType == 'Dine-in'%}
+                        <span>Table No.: {{order.tableNumber}}</span>
+                        {%endif%}
+                    </div>
+                    <div class="KOT_buttons">
+                        <form class="KOT_form" method="post">
+                            {%csrf_token%}
+                            <button formaction="manageOrders" id="KOTcompletedbtn" class="KOTbutton" name="orderId" value={{order.orderId}}>Mark As Completed</button>
+                        </form>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </main>
+    <script src="{%static 'orderPopup.js'%}"></script>
+</body>
+</html>

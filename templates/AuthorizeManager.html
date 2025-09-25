@@ -1,0 +1,41 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <link rel="stylesheet" href="{%static 'authorize.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <title>Confirm Authorization</title>
+</head>
+<body>
+    <div id="layer">
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><a id="mainHeadingLink" href="\"><i>POSWA</i></a></h1>
+            <form class="navForm" action="loginManager">
+                <button class="navButton">Manager Login</button>
+            </form>
+        </nav>
+    </header>
+    <main>
+        <div id="authDiv">
+            <h1 id="authHead">Are you authorized to be a Manager ?</h1>
+            <form id="authForm" action="authManager" method="POST">
+                {%csrf_token%}
+                <input class="authField" type="text" name="Restaurant_ID" placeholder="Enter Restaurant ID" required="true"><br>
+                <input class="authField" type="text" name="Admin_AccessID" placeholder="Enter Access ID" required="true"><br>
+                <input id="authButton" type="submit" value="Authorize">
+            </form>
+            <div class="errorMessage">
+                {%for message in messages%}
+                    {{message}}
+                {%endfor%}
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'staffPage.css'%}">
+    <link rel="stylesheet" href="{%static 'staffProfile.css'%}">
+    <title>Staff Page</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="staffProfile" href="staffProfile">Profile</a>
+                <a id="manageOrders" href="manageOrders">Manage Previous Orders</a>
+                <a id="manageKOT" href="manageKOTS">View Active KOTs</a>
+                <a id="manageCustomers" href="manageCustomers">Manage Customer Details</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="orderPopup">
+            <button id="closePopup" type="button">X</button>
+            <form id="orderPopupForm" action="">
+                {%csrf_token%}
+            </form>
+        </div>
+        <div id="mainPage">
+            {%for staff in Staffdetails%}
+            {%for restaurant in Restaurantdetails%}
+            <div id="PageHead">
+                <h1>{{restaurant.Restaurant_name}}</h1><br>
+                <p><b>{{restaurant.Restaurant_address}}</b></p>
+                <button id="orderButton">Place Order</button>
+            </div>
+            <div id="PageContent">
+                <p><b>Restaurant ID:</b> {{restaurant.user_id}}</p><br>
+                <p><b>Staff Name:</b> {{staff.first_name}} {{staff.last_name}}</p><br>
+                <p><b>Staff Address:</b> {{staff.address}}</p><br>
+                <p><b>Staff Contact:</b> {{staff.contact}}</p>
+            </div>
+            {%endfor%}
+            {%endfor%}
+        </div>
+    </main>
+    <script src="{%static 'orderPopup.js'%}"></script>
+</body>
+</html>

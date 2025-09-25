@@ -1,0 +1,79 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'staffPage.css'%}">
+    <link rel="stylesheet" href="{%static 'manageOrders.css'%}">
+    <title>Staff Page</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="staffProfile" href="staffProfile">Profile</a>
+                <a id="manageOrders" href="manageOrders">Manage Previous Orders</a>
+                <a id="manageKOT" href="manageKOTS">View Active KOTs</a>
+                <a id="manageCustomers" href="manageCustomers">Manage Customer Details</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="orderPopup">
+            <button id="closePopup" type="button">X</button>
+            <form id="orderPopupForm" action="">
+                {%csrf_token%}
+            </form>
+        </div>
+        <div id="orderPopup"></div>
+        <div id="mainPage">
+            {%for restaurant in Restaurantdetails%}
+            <div id="PageHead">
+                <h1>{{restaurant.Restaurant_name}}</h1><br>
+                <p><b>{{restaurant.Restaurant_address}}</b></p>
+                <button id="orderButton">Place Order</button>
+            </div>
+            <div id="PageContent">
+               <table id="orderRecords">
+                   <tr id="orderRecordsHeading">
+                       <th>S.No.</th>
+                       <th>Customer Name</th>
+                       <th>Customer Contact</th>
+                       <th>Items Ordered</th>
+                       <th>Order Type</th>
+                       <th>Table Number</th>
+                       <th>Discount Applied</th>
+                       <th>Order Price</th>
+                       <th>Date</th>
+                       <th>Time</th>
+                       
+                   </tr>
+                   {%for order in Completedorders%}
+                   <tr class="orderRecordsData">
+                       <td>{{forloop.counter}}</td>
+                       <td>{{order.customerName}}</td>
+                       <td>{{order.customerContact}}</td>
+                       <td>{{order.items}}</td>
+                       <td>{{order.type}}</td>
+                       <td>{{order.tableNumber}}</td>
+                       <td>{{order.discount}}%</td>
+                       <td>{{order.price}}/-</td>
+                       <td>{{order.date}}</td>
+                       <td>{{order.time}}</td>
+                       
+                   </tr>
+                   {%endfor%}
+               </table>
+            </div>
+            {%endfor%}
+        </div>
+    </main>
+    <script src="{%static 'orderPopup.js'%}"></script>
+</body>
+</html>

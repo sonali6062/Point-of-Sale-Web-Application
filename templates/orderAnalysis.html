@@ -1,0 +1,54 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'adminPage.css'%}">
+    <link rel="stylesheet" href="{%static 'orderAnalysis.css'%}">
+    <title>Staff Page</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><i>POSWA</i></h1>
+            <form class="navForm" action="logout">
+                <button class="navButton">Logout</button>
+            </form>
+            <div id="navlinks">
+                <a id="adminProfile" href="adminProfile">Profile</a>
+                <a id="manageEmployees" href="manageEmployees">Manage Employees</a>
+                <a id="salesRecords" href="salesRecords">Sales Records</a>
+                <a id="salesAnalysis" href="salesAnalysis">Sales Analysis</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="mainPage">
+            {%for restaurant in Restaurantdetails%}
+            <div id="PageHead">
+                <h1>{{restaurant.Restaurant_name}}</h1><br>
+                <p><b>{{restaurant.Restaurant_address}}</b></p>
+            </div>
+            <div id="PageContent">
+                <form id="dateForm" action="salesAnalysis" method="post">
+                    {%csrf_token%}
+                    <input id="analysisField" type="date" name="plotDate" required='true'><br/><br/>
+                    <input id="analysisButton" type="submit" value="Get Analysis">
+                </form>
+                {%if chart == 0%}
+                    <div id="analysisText">Enter date to view sales analysis</div>
+                {%elif chart == 1%}
+                    <div id="errorText">Sorry! There is no record available for the entered date.</div>
+                {%else%}
+                    <div id="graphDiv">
+                        <img id="graph" src="data:image/png;base64, {{chart|safe}}">
+                    </div>
+                {%endif%}
+            </div>
+            {%endfor%}
+        </div>
+    </main>
+</body>
+</html>

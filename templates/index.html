@@ -1,0 +1,58 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <title>Home</title>
+</head>
+<body>
+    
+    <header>
+        <nav id="navbar">
+            <h1 id="mainHeading"><a id="mainHeadingLink" href="\"><i>POSWA</i></a></h1>
+            <form class="navForm" action="registerAdmin">
+                <button class="navButton">Register Your Business Here!</button>
+            </form>
+            <form class="navForm" action="loginAdmin">
+                <button class="navButton">Admin Login</button>
+            </form>
+        </nav>
+    </header>
+    <main>
+        <div id="indexPage">
+            <div id="about">
+                <p id="aboutText">
+                    POSWA is an integrated Restaurant Management and Point of Sale System. This system provides a comprehensive 
+                    analysis of the sales conducted at your restaurant, thus equiping you with useful information that can optimize
+                    the economy of your business.
+                </p>
+            </div>
+            <div id="indexProfile">
+                <div class="userProfiles">
+                    <form class="userLoginForm" action="loginManager">
+                        <button class="loginButton">Login for MANAGER</button>
+                    </form>
+                    <a class="registerLink" href="authManager">Register as a Manager</a>
+                </div>
+                <div class="userProfiles">
+                    <form class="userLoginForm" action="loginStaff">
+                        <button class="loginButton">Login for STAFF</button>
+                    </form>
+                    <a class="registerLink" href="authStaff">Register as a Staff Personel</a>
+                </div>
+            </div>
+            <div id="predictionModel">
+                <form action="predictRevenue">
+                    <button id="predictionButton">Predict Annual Revenue</button>
+                </form>
+                
+            </div>
+        </div>
+    </main>
+    </div>
+</body>
+</html>
