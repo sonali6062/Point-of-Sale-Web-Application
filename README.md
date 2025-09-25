@@ -22,11 +22,11 @@ A web POS application built with a Python web framework (Django/Flask style stru
 * Dashboard / basic sales summary and reports
 * Static frontend assets (HTML templates, CSS, JavaScript)
 
-> NOTE: Exact features present depend on the repository’s implemented modules. The above list reflects the common features and what is usually present in this repo structure.
+
 
 ---
 
-# Tech stack (expected)
+# Tech stack 
 
 * Python 3.8+
 * Django (likely) or Flask (structure suggests Django because of `manage.py`)
@@ -75,18 +75,6 @@ python manage.py runserver
 
 ---
 
-# If something’s missing
-
-* **No `requirements.txt`?** create one after you confirm working packages:
-
-  ```bash
-  pip freeze > requirements.txt
-  ```
-* **`manage.py` missing or not a Django project?** Inspect `README.md` or project root for start instructions. If it’s Flask, look for `app.py` or `wsgi.py`.
-* **Errors running `migrate`**: Make sure `DATABASES` in settings points to a valid DB. For quick dev use `sqlite3` (default Django DB).
-* **Missing static/media files**: Some images or assets may be tracked externally. Check `static/` and `media/` folders.
-
----
 
 # Environment variables (example `.env`)
 
@@ -97,19 +85,12 @@ DEBUG=True
 SECRET_KEY=your-secret-key-here
 DATABASE_URL=sqlite:///db.sqlite3
 ALLOWED_HOSTS=127.0.0.1,localhost
-```
-
-(Adapt names to what `settings.py` or the config expects.)
 
 ---
 
-# Default credentials (if any)
 
-If the repository includes a fixture or a default created user, check `/fixtures` or `initial_data`. Otherwise, use `createsuperuser` to create an admin.
 
----
-
-# Suggested folder overview
+#  Folder overview
 
 ```
 Point-of-Sale-Web-Application/
@@ -158,4 +139,4 @@ pip install pillow
 
 If database issues -> delete the db.sqlite3 file (if it exists), then re-run migrations.
 
-Check if the repo has any README.md instructions (sometimes specific steps are mentioned).
+
