@@ -1,0 +1,23 @@
+#salesRecords{
+    background:rgb(182, 143, 17);
+}
+#orderRecords{
+    background:rgba(255,255,255,0.8);
+    width:90%;
+    margin:auto;
+    text-align:center;
+    margin-top:20px;
+}
+#orderRecords tr{
+    background:rgba(0,0,0,0.9);
+    color:white;
+}
+#orderRecords tr th{
+    padding:5px;
+    font-size:18px;
+    border-bottom:4px solid rgb(182, 143, 17);
+}
+#orderRecords tr td{
+    padding:5px;
+    font-size:18px;
+}

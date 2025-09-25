@@ -1,0 +1,9 @@
+#staffProfile{
+    background:rgb(190, 42, 42);
+}
+#PageContent{
+    display:flex;
+    flex-direction:column;
+    padding:2%;
+    font-size:20px;
+}

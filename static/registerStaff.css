@@ -1,0 +1,43 @@
+body{
+    background-image:url("images/staff.jpg");
+    background-size:cover;
+}
+#registerDiv{
+    width:50%;
+    margin:auto;
+    margin-top:2%;
+    text-align:center;
+    font-size:30px;
+    padding:2%;
+    background:rgba(0,0,0,0.8);
+    color:white;
+}
+#registerDiv h1{
+    color:rgb(0, 255, 234);
+}
+#registerForm{
+    
+    display:flex;
+    flex-direction:column;
+    width:230px;
+    margin:auto;
+    margin-top:5%;
+}
+.registerField{
+    font-size:18px;
+    padding:3%;
+    border:none;
+    margin-bottom:3%;
+    outline:none;
+}
+.registerButton{
+    font-size:18px;
+    padding:3%;
+    border:1px solid red;
+    color:red;
+    background:none;
+}
+.registerButton:hover{
+    border:1px solid white;
+    color:white;
+}
