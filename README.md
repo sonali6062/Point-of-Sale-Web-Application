@@ -1,14 +1,14 @@
 # Point-of-Sale-Web-Application
 
 
-A simple, browser-based Point-of-Sale (POS) system — a web app for managing products, inventory and sales (billing / receipts).
+A simple, browser-based Point-of-Sale (POS) system - a web app for managing products, inventory and sales (billing / receipts).
 This README is written so you can quickly run the project locally, understand its capabilities, and contribute.
 
 ---
 
 # What is this project?
 
-A web POS application built with a Python web framework (Django/Flask style structure is used here — the repo contains `manage.py`, `templates/`, and `static/`). It provides the typical features a small retail/business needs: product & inventory management, a checkout/sales interface, invoices/receipts and admin views.
+A web POS application built with a Python web framework (Django/Flask style structure is used here - the repo contains `manage.py`, `templates/`, and `static/`). It provides the typical features a small retail/business needs: product & inventory management, a checkout/sales interface, invoices/receipts and admin views.
 
 ---
 
@@ -156,6 +156,6 @@ pip install djangorestframework
 pip install pillow
 
 
-If database issues → delete the db.sqlite3 file (if it exists), then re-run migrations.
+If database issues -> delete the db.sqlite3 file (if it exists), then re-run migrations.
 
 Check if the repo has any README.md instructions (sometimes specific steps are mentioned).
