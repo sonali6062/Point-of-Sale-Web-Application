@@ -122,7 +122,6 @@ Point-of-Sale-Web-Application/
 └─ README.md
 ```
 
----
 
 # Common commands
 
@@ -151,12 +150,11 @@ Point-of-Sale-Web-Application/
 ---
 
 
-
 If some module is missing (ModuleNotFoundError), install it manually, e.g.:
 ---
 pip install djangorestframework
 pip install pillow
----
+
 
 If database issues → delete the db.sqlite3 file (if it exists), then re-run migrations.
 
